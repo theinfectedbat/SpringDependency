@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+	<!-- when constructor injection is expected to be used -->
+	<!--
+	<bean id="MyXMLApp" class="com.test.demo.servicesExecutor.XMLTypeExecutor"> 
+		<constructor-arg>
+			<bean class="com.test.demo.services.TwitterService"/> 
+		</constructor-arg> 
+	</bean> 
+	-->
+
+	<!-- first create bean -->
+	<bean id="twitter" class="com.test.demo.services.TwitterService"></bean>
+
+	<!-- inject the created bean into injector class -->
+	<bean id="myXMLApp" class="com.test.demo.servicesExecutor.XMLTypeExecutor">
+		<property name="service" ref="twitter"></property>
+	</bean>
+
+</beans>
